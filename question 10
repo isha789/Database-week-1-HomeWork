@@ -1,0 +1,21 @@
+--mentors who lived more than 5 years in glasgow
+select * from mentors;
+select * from mentors where years_in_glasgow > 5;
+
+--mentors whose favourite language is javascript
+
+select * from mentors where favourite_language = 'javaScript';
+
+--students who are CYF graduates
+select * from students;
+
+select * from students where graduated_from_code_your_future is true;
+
+--all classes taught before june this year
+select * from classes;
+select * from classes where date < '2022-06-01';
+
+--students who attend the javaScript classes
+
+select students_id from attendance
+where classes_id = 3;

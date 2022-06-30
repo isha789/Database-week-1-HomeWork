@@ -1,0 +1,91 @@
+create table mentors (
+id SERIAL primary key,
+name VARCHAR(30) not null,
+years_in_glasgow smallint not null,
+favourite_language VARCHAR(25) not null,
+address VARCHAR(100) not null
+);
+
+INSERT into mentors (name, years_in_Glasgow, favourite_language, address)
+VALUES ('John', 23, 'JavaScript', '44 Red Road' );
+INSERT INTO mentors  (name, years_in_Glasgow, favourite_language, address)
+VALUES ('Joe', 24, 'Java', '45 Red Road' );
+INSERT INTO mentors  (name, years_in_Glasgow, favourite_language, address)
+VALUES ('Jane', 3, 'C++', '46 Red Road' );
+INSERT INTO mentors  (name, years_in_Glasgow, favourite_language, address)
+VALUES ('Jenny', 26, 'Python', '47 Red Road' );
+INSERT INTO mentors  (name, years_in_Glasgow, favourite_language, address)
+VALUES ('Joey', 27, 'javascript', '48 Red Road' );
+
+
+
+create table students(
+	id SERIAL primary key,
+	name VARCHAR(30) NOT NULL,
+	address VARCHAR(100) not null,
+	graduated_from_code_your_future BOOLEAN
+);
+
+INSERT into students  (name, address, graduated_from_code_your_future) 
+VALUES ('Alice', '2 High Road',true);
+ INSERT INTO students  (name, address, graduated_from_code_your_future)
+VALUES ('Miguel', '33 High Road',false);
+ INSERT INTO students  (name, address, graduated_from_code_your_future)
+VALUES ('Laura', '4 Preston Road',false);
+ INSERT INTO students (name, address, graduated_from_code_your_future)
+VALUES ('Bruno', '133 Preston Road',true);
+ INSERT INTO students (name, address, graduated_from_code_your_future) 
+VALUES ('Jose', '77 Town Lane',true);
+ INSERT INTO students (name, address, graduated_from_code_your_future)
+VALUES ('Maria', '15 Blue Road',false);
+ INSERT INTO students (name, address, graduated_from_code_your_future)
+VALUES ('Adam', '11 Main Avenue',true);
+ INSERT INTO students (name, address, graduated_from_code_your_future)
+VALUES ('Ana', '33 Town Lane',true);
+ INSERT INTO students (name, address, graduated_from_code_your_future)
+VALUES ('Lola', '22 Green Lane',false);
+ INSERT INTO students (name, address, graduated_from_code_your_future) 
+VALUES ('John', '77 Yellow Street',true);
+
+
+
+ create table classes (
+   id SERIAL primary key,
+    mentor_id INT references mentors(id),
+    topic varchar(50) not NULL,
+    date DATE not NULL,
+    location VARCHAR(50) not null
+);
+
+
+CREATE TABLE attendance (
+id SERIAL primary key,
+student_id INT references students(id),
+class_id INT references classes(id)
+);
+
+
+INSERT INTO classes (mentor_id, topic, date, location)
+VALUES (1, 'Python','2021-11-11','Barcelona');
+ INSERT INTO classes (mentor_id, topic, date, location)
+VALUES (2, 'Java','2021-11-09','Barcelona');
+ INSERT INTO classes (mentor_id, topic, date, location)
+VALUES (3, 'JavaScript','2021-11-04','Barcelona');
+insert into classes (mentor_id, topic, date, location)
+values (4, 'database', '2022-06-02', 'barcelona');
+
+insert into attendance (students_id, classes_id) values(6,3);
+insert into attendance (students_id, classes_id) values(5,1);
+insert into attendance (students_id, classes_id) values(4,3);
+insert into attendance (students_id, classes_id) values(5,2);
+insert into attendance (students_id, classes_id) values(10,2);
+
+select *  from classes;
+
+select * from attendance;
+
+select * from mentors;
+
+select * from students;
+
+
